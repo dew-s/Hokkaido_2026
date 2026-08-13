@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hokkaido 2026 · Group Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ui:'Outfit','Noto Sans Thai','Sukhumvit Set','Leelawadee UI',Thonburi,system-ui,-apple-system,'Segoe UI',sans-serif;
+    --dis:'Fraunces','Iowan Old Style',Georgia,serif;
+    --jp:'Hiragino Mincho ProN','Yu Mincho',YuMincho,'Songti SC',serif;
+    --bg:#FBF7F0; --card:#FFFFFF; --ink:#2A211B; --muted:#7C6F63; --faint:#A89A8C;
+    --line:#EBE2D6; --peak:#B23A1E; --peakbg:#FBEDE8; --good:#A86A12; --goodbg:#FBF1DE;
+    --turn:#4F7A2E; --turnbg:#EEF4E2; --flex:#5A52A8; --flexbg:#ECEAFA;
+    --accent:#1D7A5B; --accentbg:#E3F2EB; --sun:#C2410C; --sunbg:#FCEEE6; --rain:#3F6B22;
+    --map:#1A6CC4; --pinbg:#FAF3E8; --onsen:#993556; --onsenbg:#FBEAF0;
+    --land:#E7E0C9; --coast:#CDBFA0; --road:#B4A578; --leader:#AA9C7C;
+    --city:#34506E; --base:#1D7A5B; --mtn:#B23A1E; --ref:#94A3B8; --photo:#C7780F; --air:#6B7280;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:var(--ui);background:var(--bg);color:var(--ink);line-height:1.6;
+    -webkit-font-smoothing:antialiased;padding-bottom:48px;}
+  .wrap{max-width:680px;margin:0 auto;padding:0 18px;}
+
+  header{padding:46px 18px 26px;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 18% 22%, rgba(178,58,30,.10), transparent 42%),
+      radial-gradient(circle at 82% 30%, rgba(168,106,18,.12), transparent 45%),
+      radial-gradient(circle at 50% 90%, rgba(79,122,46,.08), transparent 50%);}
+  header .inner{position:relative;}
+  .leaf{font-size:30px;letter-spacing:6px;}
+  h1{font-family:var(--dis);font-weight:600;font-size:34px;line-height:1.12;margin:8px 0 6px;letter-spacing:-.5px;}
+  .sub{font-size:13px;color:var(--muted);letter-spacing:.3px;}
+  .meta{display:inline-flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:16px;}
+  .chip{font-size:11px;padding:5px 12px;border-radius:30px;background:var(--card);border:1px solid var(--line);
+    color:var(--muted);font-weight:500;}
+  .ver{margin-top:14px;font-size:10.5px;color:var(--faint);letter-spacing:1px;text-transform:uppercase;}
+
+  .sunbar{max-width:680px;margin:0 auto 6px;padding:9px 16px;display:flex;align-items:center;gap:8px;
+    justify-content:center;font-size:11px;color:#7A4F3A;background:var(--sunbg);border-top:1px solid #F2D9C8;
+    border-bottom:1px solid #F2D9C8;line-height:1.4;text-align:center;}
+
+  nav{position:sticky;top:0;z-index:20;background:rgba(251,247,240,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);padding:10px 0;}
+  nav .navin{max-width:680px;margin:0 auto;padding:0 18px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+  nav a{font-size:12px;font-weight:500;color:var(--muted);text-decoration:none;padding:5px 13px;
+    border:1px solid var(--line);border-radius:30px;background:var(--card);transition:.15s;}
+  nav a:active{transform:scale(.96);}
+
+  .seclabel{display:flex;align-items:center;gap:10px;margin:32px 0 14px;scroll-margin-top:60px;}
+  .seclabel span{font-family:var(--dis);font-weight:600;font-size:17px;white-space:nowrap;}
+  .seclabel .ln{flex:1;height:1px;background:var(--line);}
+  .seclabel small{font-size:11px;color:var(--faint);font-weight:400;}
+
+  .day{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px 16px;margin-bottom:11px;
+    display:flex;gap:14px;align-items:flex-start;}
+  .day .n{flex-shrink:0;width:46px;text-align:center;}
+  .day .n b{display:block;font-family:var(--dis);font-weight:600;font-size:15px;}
+  .day .n s{display:block;font-size:10px;color:var(--faint);text-decoration:none;margin-top:1px;}
+  .day .body{flex:1;min-width:0;}
+  .day .stay{font-size:11px;color:var(--accent);font-weight:500;margin-bottom:2px;}
+  .day .txt{font-size:13.5px;color:var(--ink);}
+  .badge{display:inline-block;font-size:10px;font-weight:500;padding:2px 9px;border-radius:20px;margin-top:7px;}
+  .b-peak{background:var(--peakbg);color:var(--peak);}
+  .b-good{background:var(--goodbg);color:var(--good);}
+  .b-turn{background:var(--turnbg);color:var(--turn);}
+  .b-flex{background:var(--flexbg);color:var(--flex);}
+  .south{border-left:3px solid var(--accent);}
+
+  .poolbar{background:linear-gradient(100deg,#FBF1DE,#FBEDE8);border:1px solid #F0DCC8;border-radius:16px;
+    padding:16px 17px;margin-bottom:14px;}
+  .poolbar h3{font-family:var(--dis);font-weight:600;font-size:16px;margin-bottom:5px;}
+  .poolbar p{font-size:12.5px;color:#7A5C42;}
+
+  .rule{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;}
+  .rule div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 11px;font-size:11.5px;color:var(--muted);}
+  .rule b{color:var(--ink);font-weight:500;}
+
+  .act{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 17px;margin-bottom:11px;}
+  .act.star{border:1.5px solid var(--accent);}
+  .act .head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:11px;}
+  .act .head h4{font-family:var(--dis);font-weight:600;font-size:17px;}
+  .tag{font-size:9.5px;font-weight:500;padding:3px 9px;border-radius:20px;}
+  .t-sun{background:var(--sunbg);color:var(--sun);}
+  .t-rain{background:#EDF4E0;color:var(--rain);}
+  .t-star{background:var(--accentbg);color:var(--accent);}
+  .t-fix{background:#F2EEE7;color:#6B5D4F;}
+  .act dl{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:13px;}
+  .act dt{color:var(--accent);font-weight:500;white-space:nowrap;}
+  .act dd{color:var(--ink);}
+  .act dt.ons{color:var(--onsen);}
+  .t-easy{background:#E3F2EB;color:#0F6E56;}
+  .actfig{margin:12px 0 2px;border-radius:12px;overflow:hidden;border:1px solid var(--line);}
+  .actfig img{width:100%;height:auto;display:block;}
+  .actfig figcaption{font-size:10.5px;color:var(--faint);padding:5px 10px;background:var(--card);}
+  .act dt.tim{color:#6B5D8A;}
+  .act .warn{margin-top:11px;font-size:11.5px;color:var(--peak);background:var(--peakbg);
+    padding:8px 11px;border-radius:10px;line-height:1.5;}
+
+  .pins{margin-top:11px;}
+  .pinlabel{font-size:10px;font-weight:500;color:var(--good);letter-spacing:.5px;text-transform:uppercase;
+    display:flex;align-items:center;gap:5px;margin-bottom:7px;}
+  .pin{display:flex;align-items:center;justify-content:space-between;gap:8px;
+    background:var(--pinbg);border:1px solid #EFE3D2;border-radius:10px;padding:8px 11px;text-decoration:none;margin-bottom:6px;}
+  .pin:last-child{margin-bottom:0;}
+  .pin .pn{font-size:12.5px;font-weight:500;color:var(--map);display:inline-flex;align-items:center;gap:5px;min-width:0;}
+  .pin .pn svg{flex-shrink:0;opacity:.85;}
+  .lt{font-size:9.5px;font-weight:500;padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+  .k-sr{background:var(--sunbg);color:var(--sun);}
+  .k-ss{background:var(--peakbg);color:var(--peak);}
+  .k-ad{background:var(--turnbg);color:var(--turn);}
+  .pinnote{font-size:11px;color:var(--muted);margin:1px 0 0 1px;line-height:1.45;}
+
+  footer{text-align:center;margin-top:40px;font-size:11px;color:var(--faint);line-height:1.7;}
+  .legend{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin:18px 0 8px;}
+  .legend span{font-size:10px;padding:3px 10px;border-radius:20px;}
+  .mapcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px;margin:10px 0 4px;box-shadow:0 2px 14px rgba(60,40,20,.06);}
+  .mapcard svg{width:100%;height:auto;display:block;}
+  .place,.base-lbl,.sub-lbl,.drive,.inset-town{paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round;font-weight:600;}
+  .place{font-size:14px;fill:var(--ink);}
+  .base-lbl{font-size:14.5px;fill:var(--base);}
+  .sub-lbl{font-size:11px;font-weight:500;fill:var(--photo);stroke-width:3.2px;}
+  .drive{font-size:11.5px;fill:#5A4E30;stroke-width:3.6px;}
+  .dsm{font-size:10px;fill:var(--muted);stroke-width:3px;}
+  .jp{font-family:var(--jp);fill:var(--coast);opacity:.45;}
+  .compass{font-size:12px;font-weight:600;fill:var(--faint);}
+  .ztag{font-size:11px;font-weight:600;fill:var(--photo);}
+  .leaderline{stroke:var(--leader);stroke-width:1;fill:none;opacity:.75;}
+  .inset-title{font-size:13.5px;font-weight:600;fill:var(--ink);}
+  .inset-legend{font-size:12.5px;fill:var(--ink);}
+  .inset-tag{font-size:10.5px;fill:var(--muted);}
+  .inset-town{font-size:12.5px;fill:var(--base);stroke:#FCFAF5;stroke-width:3px;}
+  .photonum{font-size:11px;font-weight:600;fill:#fff;}
+  .maplegend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:6px 0 2px;}
+  .maplegend span{font-size:12px;padding:5px 11px;border-radius:22px;background:var(--card);border:1px solid var(--line);color:var(--ink);display:inline-flex;align-items:center;gap:7px;font-weight:500;}
+  .mdot{width:12px;height:12px;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.06);}
+  .mtri{width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid var(--mtn);display:inline-block;}
+  .mroad{width:20px;height:4px;border-radius:3px;background:var(--road);display:inline-block;}
+  .group{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:16px;}
+  .group h3{font-family:var(--dis);font-weight:600;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .roster{display:flex;flex-wrap:wrap;gap:9px;}
+  .member{display:inline-flex;align-items:center;gap:8px;background:#FBF1DE;border:1px solid #F0DCC8;border-radius:24px;padding:6px 13px 6px 7px;font-size:14px;font-weight:500;color:var(--ink);}
+  .ava{width:24px;height:24px;border-radius:50%;background:var(--base);color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .member.host .ava{background:var(--city);}
+  .member.lead .ava{background:var(--mtn);}
+  .htag{font-size:10px;font-weight:600;color:var(--city);}
+  .gnote{font-size:11.5px;color:var(--muted);margin-top:10px;}
+  .ok{color:var(--accent);}
+  .warn.w-ok{color:var(--accent);background:var(--accentbg);}
+  .t-long{background:#FCEBEB;color:#791F1F;}
+  .t-swap{background:#EEEDFE;color:#3C3489;}
+  .ei{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;}
+  .gtk{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.75;}
+  .gtk b,.tnote b{color:var(--ink);font-weight:500;}
+  .tnote{font-size:12.5px;color:var(--muted);margin:0 0 4px;}
+  .tsub{font-size:11.5px;color:var(--faint);margin:0 0 10px;}
+  .tscroll{overflow-x:auto;}
+  .bus{width:100%;border-collapse:collapse;font-size:12.5px;min-width:440px;}
+  .bus th,.bus td{padding:7px 9px;text-align:left;border-bottom:1px solid var(--line);}
+  .bus th{padding-top:8px;padding-bottom:8px;font-weight:600;border-bottom-width:1.5px;}
+  .bus th:nth-child(4),.bus td:nth-child(4){text-align:center;}
+  .bus tr:last-child td{border-bottom:0;}
+  .bus td.m{color:var(--muted);}
+  .bus td.y{color:var(--accent);}
+  .bus td.n{color:var(--faint);}
+  .htag.lead{color:var(--mtn);}
+</style>
+</head>
+<body>
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><symbol id="ext" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol></svg>
+
+<header>
+  <div class="inner">
+    <div class="leaf">🍁</div>
+    <h1>Hokkaido in Autumn</h1>
+    <div class="sub">Sapporo · Biei · Daisetsuzan · Onsen Country</div>
+    <div class="meta">
+      <span class="chip">📅 Oct 15–26, 2026</span>
+      <span class="chip">✈️ ANA · BKK ⇄ CTS</span>
+      <span class="chip">🚗 Self-drive</span>
+    </div>
+    <div class="ver">Beta v0.6 · group preview</div>
+  </div>
+</header>
+
+<div class="sunbar">📷 October light: 🌅 sunrise ~6:00–6:15 · 🌇 sunset ~16:35–16:55 — golden hour is short, be early! Photo pins are tappable Google Maps links.</div>
+
+<nav>
+  <div class="navin">
+    <a href="#itinerary">🗺️ Itinerary</a>
+    <a href="#pool">🗻 Biei days</a>
+    <a href="#south">♨️ Onsen leg</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="seclabel" id="map"><span>🗺️ Route Map</span><div class="ln"></div><small>all 23 pins</small></div>
+  <div class="maplegend">
+    <span><span class="mdot" style="background:var(--city)"></span>🏙️ Sapporo</span>
+    <span><span class="mdot" style="background:var(--base)"></span>🌾 Biei · Furano</span>
+    <span><span class="mtri"></span> Trek</span>
+    <span><span class="mdot" style="background:var(--onsen)"></span>♨️ Onsen</span>
+    <span><span class="mdot" style="background:var(--ref)"></span>Asahikawa · ✈️</span>
+    <span><span class="mdot" style="background:var(--photo)"></span>📷 Photo</span>
+    <span><span class="mroad"></span> Road (approx.)</span>
+  </div>
+  <div class="mapcard">
+    <svg viewBox="0 0 820 600" role="img" aria-label="Minimal map of Hokkaido with all pins. Crowded labels are fanned into open sea with leader lines so every name is readable. Includes a scenic zoom panel for the Biei-Furano corridor.">
+
+      <!-- landmass -->
+      <path d="M150,200 C150,168 168,130 200,120 C245,107 292,100 332,103 C382,106 422,97 452,105
+               C500,113 542,110 562,133 C583,152 590,182 585,206 C580,236 559,270 527,300
+               C500,325 470,350 435,361 C398,372 360,377 322,377 C290,377 260,371 238,367
+               C208,363 184,367 168,381 C150,398 130,428 116,460 C126,440 143,418 152,396
+               C162,372 156,344 152,318 C147,288 146,244 150,200 Z"
+            fill="var(--land)" stroke="var(--coast)" stroke-width="2" stroke-linejoin="round"/>
+
+      <!-- JP watermark (far NE) -->
+      <text x="722" y="118" class="jp" font-size="26" text-anchor="middle">北海道</text>
+      <text x="722" y="136" class="jp" font-size="10" text-anchor="middle" style="letter-spacing:2px;">HOKKAIDO</text>
+
+      <!-- compass -->
+      <text x="46" y="128" class="compass" text-anchor="middle">N</text>
+      <line x1="46" y1="133" x2="46" y2="153" stroke="var(--faint)" stroke-width="1.5"/>
+      <path d="M46,131 l-3.5,7 l7,0 Z" fill="var(--faint)"/>
+
+      <!-- ROADS -->
+      <g fill="none" stroke="var(--road)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M204,270 C250,240 300,204 350,158"/>
+        <path d="M350,158 C356,170 360,178 365,187 C369,205 360,223 351,236"/>
+        <path d="M365,187 C390,178 408,174 421,172"/>
+        <path d="M361,209 C374,212 382,214 389,214"/>
+        <path d="M350,158 C392,150 420,155 445,166"/>
+        <path d="M204,270 C193,300 182,332 173,360"/>
+        <path d="M173,360 C146,334 148,306 176,286"/>
+        <path d="M176,286 C186,280 196,274 204,270"/>
+      </g>
+
+      <!-- leader lines (marker -> label) -->
+      <g class="leaderline">
+        <path d="M452,162 L469,152"/>   <!-- Kurodake -->
+        <path d="M429,174 L469,195"/>   <!-- Asahidake -->
+        <path d="M397,216 L469,249"/>   <!-- Tokachidake -->
+        <path d="M357,185 L303,178"/>   <!-- Biei -->
+        <path d="M346,236 L303,240"/>   <!-- Furano -->
+      </g>
+
+      <!-- drive-time labels -->
+      <text x="272" y="204" class="drive" text-anchor="middle">~2 hr</text>
+      <text x="272" y="219" class="drive dsm" text-anchor="middle">🛣️ expressway</text>
+      <text x="338" y="168" class="drive" text-anchor="end">~30 min</text>
+      <text x="335" y="214" class="drive" text-anchor="end">~25 min</text>
+      <text x="398" y="167" class="drive" text-anchor="middle">~45 min</text>
+      <text x="378" y="206" class="drive" text-anchor="middle">~45 min</text>
+      <text x="405" y="144" class="drive" text-anchor="middle">~1 hr</text>
+      <text x="200" y="322" class="drive" text-anchor="start">~1.5 hr</text>
+      <text x="124" y="320" class="drive" text-anchor="middle">~2 hr</text>
+      <text x="222" y="263" class="drive" text-anchor="start">~1 hr</text>
+
+      <!-- zoom rect around Biei/Furano -->
+      <rect x="340" y="170" width="46" height="82" rx="8" fill="none" stroke="var(--photo)" stroke-width="1.7" stroke-dasharray="5,4" opacity=".85"/>
+      <text x="363" y="266" class="ztag" text-anchor="middle">↓ scenic detail below</text>
+
+      <!-- MARKERS -->
+      <circle cx="253" cy="316" r="5" fill="var(--air)" stroke="#fff" stroke-width="1.8"/>
+      <circle cx="350" cy="158" r="5.5" fill="var(--ref)" stroke="#fff" stroke-width="2"/>
+      <circle cx="173" cy="360" r="6.5" fill="var(--onsen)" stroke="#fff" stroke-width="2.2"/>
+      <circle cx="176" cy="286" r="6.5" fill="var(--onsen)" stroke="#fff" stroke-width="2.2"/>
+      <circle cx="204" cy="270" r="7" fill="var(--city)" stroke="#fff" stroke-width="2.2"/>
+      <circle cx="351" cy="236" r="5.5" fill="var(--base)" stroke="#fff" stroke-width="2"/>
+      <circle cx="365" cy="187" r="13" fill="none" stroke="var(--base)" stroke-width="1.6" opacity=".45"/>
+      <circle cx="365" cy="187" r="7.5" fill="var(--base)" stroke="#fff" stroke-width="2.6"/>
+
+      <!-- treks -->
+      <polygon points="412,181 430,181 421,160" fill="var(--mtn)" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/>
+      <polygon points="380,223 398,223 389,202" fill="var(--mtn)" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/>
+      <polygon points="436,175 454,175 445,154" fill="var(--mtn)" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/>
+
+      <!-- ===== labels: mountains fanned into east sea ===== -->
+      <text x="472" y="150" class="place" text-anchor="start">Kurodake · Sounkyo</text>
+      <text x="472" y="164" class="sub-lbl" text-anchor="start">📷 7th Stn · Ryusei Falls</text>
+
+      <text x="472" y="199" class="place" text-anchor="start">Asahidake</text>
+      <text x="472" y="213" class="sub-lbl" text-anchor="start">📷 Sugatami Pond</text>
+
+      <text x="472" y="250" class="place" text-anchor="start">Tokachidake</text>
+      <text x="472" y="264" class="sub-lbl" text-anchor="start">📷 Bogakudai</text>
+
+      <!-- base labels: west -->
+      <text x="300" y="176" class="base-lbl" text-anchor="end">★ Biei · base</text>
+      <text x="300" y="243" class="base-lbl" text-anchor="end">Furano</text>
+
+      <!-- other towns -->
+      <text x="350" y="140" class="place" text-anchor="middle">Asahikawa</text>
+      <text x="204" y="291" class="place" text-anchor="middle">Sapporo</text>
+      <text x="253" y="337" class="place" text-anchor="middle">✈️ New Chitose</text>
+
+      <text x="173" y="382" class="place" text-anchor="middle">Noboribetsu ♨️</text>
+      <text x="173" y="396" class="sub-lbl" text-anchor="middle">📷 Jigokudani</text>
+
+      <text x="161" y="284" class="place" text-anchor="end">Jozankei ♨️</text>
+      <text x="161" y="298" class="sub-lbl" text-anchor="end">📷 Futami Bridge</text>
+
+      <!-- ===== ZOOM INSET: Biei–Furano scenic ===== -->
+      <rect x="470" y="344" width="340" height="248" rx="14" fill="#FCFAF5" stroke="var(--line)" stroke-width="1.5"/>
+      <text x="486" y="368" class="inset-title">📷 Biei ⇄ Furano — scenic pins</text>
+      <line x1="486" y1="376" x2="794" y2="376" stroke="var(--line)" stroke-width="1"/>
+
+      <!-- mini route -->
+      <path d="M540,430 C536,470 535,505 534,540" fill="none" stroke="var(--road)" stroke-width="2.6" stroke-linecap="round"/>
+
+      <!-- towns -->
+      <circle cx="540" cy="422" r="10" fill="none" stroke="var(--base)" stroke-width="1.4" opacity=".45"/>
+      <circle cx="540" cy="422" r="6" fill="var(--base)" stroke="#fff" stroke-width="2"/>
+      <text x="540" y="408" class="inset-town" text-anchor="middle">Biei</text>
+      <circle cx="534" cy="548" r="5" fill="var(--base)" stroke="#fff" stroke-width="1.8"/>
+      <text x="534" y="565" class="inset-town" text-anchor="middle">Furano</text>
+
+      <!-- scenic pins (numbered, spaced) -->
+      <circle cx="592" cy="452" r="9" fill="var(--photo)" stroke="#fff" stroke-width="1.9"/><text x="592" y="456" class="photonum" text-anchor="middle">1</text>
+      <circle cx="574" cy="434" r="9" fill="var(--photo)" stroke="#fff" stroke-width="1.9"/><text x="574" y="438" class="photonum" text-anchor="middle">2</text>
+      <circle cx="506" cy="406" r="9" fill="var(--photo)" stroke="#fff" stroke-width="1.9"/><text x="506" y="410" class="photonum" text-anchor="middle">3</text>
+      <circle cx="556" cy="516" r="9" fill="var(--photo)" stroke="#fff" stroke-width="1.9"/><text x="556" y="520" class="photonum" text-anchor="middle">5</text>
+      <circle cx="528" cy="508" r="9" fill="var(--photo)" stroke="#fff" stroke-width="1.9"/><text x="528" y="512" class="photonum" text-anchor="middle">4</text>
+
+      <!-- numbered legend -->
+      <text x="628" y="404" class="inset-legend"><tspan font-weight="600" fill="var(--photo)">1</tspan>  Blue Pond · Shirahige</text>
+      <text x="628" y="404" class="inset-tag" dy="16">🌅 sunrise · falls all-day</text>
+      <text x="628" y="446" class="inset-legend"><tspan font-weight="600" fill="var(--photo)">2</tspan>  Shikisai-no-Oka</text>
+      <text x="628" y="446" class="inset-tag" dy="16">🌇 sunset</text>
+      <text x="628" y="488" class="inset-legend"><tspan font-weight="600" fill="var(--photo)">3</tspan>  Patchwork · Ken&amp;Mary</text>
+      <text x="628" y="488" class="inset-tag" dy="16">🌇 sunset · lone trees</text>
+      <text x="628" y="530" class="inset-legend"><tspan font-weight="600" fill="var(--photo)">4</tspan>  Farm Tomita</text>
+      <text x="628" y="530" class="inset-tag" dy="16">☀️ all-day</text>
+      <text x="628" y="566" class="inset-legend"><tspan font-weight="600" fill="var(--photo)">5</tspan>  Rollercoaster Rd</text>
+
+    </svg>
+  </div>
+
+  <div class="seclabel" id="itinerary"><span>Arrival</span><div class="ln"></div></div>
+
+  <div class="day">
+    <div class="n"><b>D1</b><s>Oct 15</s></div>
+    <div class="body">
+      <div class="stay">🏨 Hotel Keihan · Sapporo <span class="ok">(booked ✓)</span></div>
+      <div class="txt">You arrive CTS 19:35, pick up the car, check in and rest. 🛌</div>
+      <span class="badge b-turn">Turning</span>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="n"><b>D2</b><s>Oct 16</s></div>
+    <div class="body">
+      <div class="stay">🏠 Off's place · Sapporo</div>
+      <div class="txt">Friends arrive through the day — everyone gathers at Off's. Easy city evening. 🍶</div>
+      <span class="badge b-turn">Turning</span>
+    </div>
+  </div>
+
+  <div class="seclabel" id="pool"><span>Biei Base</span><div class="ln"></div><small>Day 3–7 · pick by morning</small></div>
+
+  <div class="poolbar">
+    <h3>🗻 Flexible mountain days</h3>
+    <p>From Oct 17 we're based in Biei for 5 nights. Each morning we check the weather over breakfast and pick a card below — 3 mountains + the two town days (🍂 Biei / 🧀 Furano) spread across Oct 18–22. The <b>Biei and Furano days are fully swappable</b> — do whichever suits the weather &amp; energy, and either one can be the Oct 22 departure-day stop before driving back. Clear skies decide the mountain order; soak at a local onsen each trek evening. ♨️</p>
+  </div>
+
+  <div class="rule">
+    <div><b>☀️ Clear</b> → a mountain day</div>
+    <div><b>⛅ So-so</b> → Kurodake (sheltered)</div>
+    <div><b>🌧️ Rainy</b> → Biei ⇄ Furano (swap freely)</div>
+    <div><b>🌆 Evening</b> → onsen near the base ♨️</div>
+  </div>
+
+  <div class="act">
+    <div class="head"><h4>🌾 Day 3–7 · Biei Base</h4><span class="tag t-fix">Oct 17–22</span></div>
+    <dl>
+      <dt>Day 3</dt><dd>Morning drive Sapporo → Biei ~3 hr, lunch in Asahikawa, settle in 🍷🥩</dd>
+      <dt>Days 4–6</dt><dd>Flexible pool below — pick each morning by weather 🌤️ (3 mountains + a Biei day across Oct 18–21)</dd>
+      <dt>Day 7</dt><dd>🍂/🧀 A town day (Biei or Furano — weather's choice), then drive back to Sapporo ~3 hr (Oct 22).</dd>
+      <dt>Base</dt><dd>🪵 Ubaku Villa, Biei · 5 nights (Oct 17 → check-out Oct 22).</dd>
+    </dl>
+  </div>
+
+  <div class="act">
+    <div class="head"><h4>⛰️ Asahidake</h4><span class="tag t-sun">☀️ clear sky</span><span class="tag t-easy">🟢 easy</span></div>
+    <dl>
+      <dt>Drive</dt><dd>~50 min from Biei. Ropeway ¥2,900 return, from ~8:00.</dd>
+      <dt>Walk</dt><dd>Sugatami Pond loop — 1.7 km flat boardwalk, ~1–1.5 hr, easy for everyone.</dd>
+      <dt class="tim">Time</dt><dd>On-site ~2–2.5 hr · half day total.</dd>
+      <dt>See</dt><dd>Steam vents, crater pond, birch &amp; rowan colour.</dd>
+      <dt class="ons">Onsen</dt><dd>Asahidake Onsen — right at the ropeway base. ♨️</dd>
+    </dl>
+    <div class="warn">⚠️ Summit trek is snow-prone &amp; closed to casual hikers by mid-Oct — we stay on the loop.</div>
+    <div class="gtk">📖 <b>น่ารู้:</b> <b>Asahidake (2,291 ม.)</b> เป็นยอดเขาที่มีชื่อเสียงที่สุดของอุทยานแห่งชาติ Daisetsuzan และเป็น<b>ยอดเขาที่สูงที่สุดในฮอกไกโด</b> ตั้งอยู่ใกล้เขตเมือง Higashikawa จึงเป็น<b>ที่แรกในญี่ปุ่นที่ใบไม้เปลี่ยนสี</b> เริ่มได้ตั้งแต่กลางเดือนกันยายน · เดินทางง่ายที่สุดในสามลูก มีโรปเวย์ขึ้นถึงระดับ <b>1,600 ม.</b> สถานีล่างอยู่ในเขต Asahidake Onsen ที่มีโรงแรมและบ่อออนเซ็นหลายแห่ง · ด้านบนเลือกได้ทั้งแบบเบาและแบบโหด ทางเดินวงกลมคอร์สสั้นใช้เวลาราว <b>45–60 นาที</b> เดินสบายทุกคน — ห้ามพลาดสำหรับคนรักใบไม้แดง 🍁 · 📷 <b>เช็กก่อนขึ้น:</b> <a href="https://asahidake.hokkaido.jp/th/">เว็บไซต์ทางการ</a> มี <b>webcam เรียลไทม์</b> — ถ้าฟ้าปิดก็ไม่ต้องเสียเงินขึ้นไป</div>
+    <!-- photo: add <figure class="actfig"><img src="..." alt="..." loading="lazy"><figcaption>...</figcaption></figure> -->
+    <div class="pins">
+      <div class="pinlabel">📷 Photo spot</div>
+      <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Sugatami+Pond+Asahidake">
+        <span class="pn">Sugatami Pond <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+        <span class="lt k-sr">🌅 first ropeway 8:00</span>
+      </a>
+      <div class="pinnote">Peak mirrored in the calm pond, steam vents framed by red shrubs. Clear windows are brief — shoot fast.</div>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="head"><h4>🌋 Tokachidake</h4><span class="tag t-sun">☀️ clear sky</span><span class="tag t-easy">🟢 easy</span></div>
+    <dl>
+      <dt>Drive</dt><dd>~50 min from Biei to Bogakudai.</dd>
+      <dt>Walk</dt><dd>Bogakudai viewpoint — gentle 20–40 min strolls on the volcanic flats (no summit).</dd>
+      <dt class="tim">Time</dt><dd>On-site ~1.5–2 hr · half day total.</dd>
+      <dt>See</dt><dd>Lava fields, active steam vents, sweeping caldera views.</dd>
+      <dt class="ons">Onsen</dt><dd><b>Ryounkaku</b> — our pick ⭐ Hokkaido's highest onsen inn, at the road's end. Day-use soak, panoramic Mt. Tokachi views. Fukiage (free open-air) as the backup. ♨️</dd>
+    </dl>
+    <div class="warn">⚠️ Most exposed of the three — only on the calmest, clearest morning.</div>
+    <!-- photo: add <figure class="actfig"><img src="..." alt="..." loading="lazy"><figcaption>...</figcaption></figure> -->
+    <div class="gtk">📖 <b>น่ารู้:</b> Tokachidake Onsen ตั้งอยู่ที่ความสูง <b>1,280 ม.</b> เป็นจุดเริ่มต้นเส้นทางขึ้นยอดเขา Tokachi ฝั่งเมืองบิเอะของ Daisetsuzan · เทรกขึ้นยอดใช้เวลากว่า <b>4 ชม.</b> โหดกว่าฝั่ง Asahidake และ Kurodake เยอะ จึง<b>ไม่เหมาะกับมือใหม่</b> · เรามาแค่ชมวิวที่จุดชมทิวทัศน์แล้วแช่ออนเซ็น ซึ่งบ่อน้ำพุร้อนที่นี่ดังมากในช่วงใบไม้เปลี่ยนสี อากาศเย็น ๆ ยิ่งแช่ฟิน · ในบริเวณนี้มีเรียวกัง <b>3 แห่ง</b> (จากทางเมืองขึ้นไป: 思惟林 Shiyurin → カミホロ荘 Kamihoroso → 凌雲閣 Ryounkaku) ทุกแห่งเปิดให้แช่แบบไม่ค้างคืน · ⭐ <b>ที่เราจะไปคือ Ryounkaku</b> อยู่ปลายสุดของถนน เป็น<b>เรียวกังออนเซ็นที่สูงที่สุดในฮอกไกโด</b> น้ำสีน้ำตาลเป็นเอกลักษณ์ บ่อกลางแจ้งวิวสวยสุด มองเห็น Mt. Tokachi แบบพาโนรามา · ☎️ 0167-39-4111 · Kamihoroso (1,200 ม.) แช่ไม่ค้างคืน ผู้ใหญ่ ¥600 เด็กประถม ¥350 ♨️🍁</div>
+    <div class="pins">
+      <div class="pinlabel">📷 Photo spot · ♨️ onsen</div>
+      <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Bogakudai+Observatory+Tokachidake">
+        <span class="pn">Bogakudai Viewpoint <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+        <span class="lt k-ad">☀️ all-day</span>
+      </a>
+      <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Tokachidake+Onsen+Ryounkaku">
+        <span class="pn">♨️ Ryounkaku <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+        <span class="lt k-ss">⭐ must-soak</span>
+      </a>
+      <div class="pinnote">Steam-vent panorama &amp; moonscape ridgelines. Wide lens for the raw volcanic sweep. Ryounkaku sits at the very end of the road — drive past Bogakudai and keep going. 🚗</div>
+    </div>
+  </div>
+
+  <div class="act star">
+    <div class="head"><h4>⛰️ Kurodake + Sounkyo</h4><span class="tag t-star">⭐ best &amp; most reliable</span><span class="tag t-easy">🟢 easy</span><span class="tag t-long">🚗 long day</span></div>
+    <dl>
+      <dt>Drive</dt><dd>~1.5 hr to Sounkyo (loop via Asahikawa). Ropeway ¥3,000 + chairlift ¥600. Open 8:00–16:00.</dd>
+      <dt>Ride</dt><dd>7-min ropeway → 5th st, 15-min chairlift → 7th st. Easy viewing deck, no climb.</dd>
+      <dt>Walk</dt><dd>Sounkyo Gorge — flat ~1 hr to Ryusei &amp; Ginga Falls.</dd>
+      <dt class="tim">Time</dt><dd>On-site ~3–4 hr + ~3 hr driving = <b>full day ~7–8 hr</b>. Leave by ~7:30–8:00! ⏰</dd>
+      <dt>See</dt><dd>Japan's largest foliage zone 🍁 + Sounkyo gorge waterfalls.</dd>
+      <dt class="ons">Onsen</dt><dd>Sounkyo Onsen — right at the ropeway base. ♨️</dd>
+    </dl>
+    <div class="warn w-ok">🍁 Best colour bet for mid-Oct &amp; sheltered. Always check ropeway status — closes in wind/snow.</div>
+    <div class="gtk">📖 <b>น่ารู้:</b> <b>Kurodake (1,984 ม.)</b> เป็นยอดเขาสำคัญอีกแห่งของ Daisetsuzan อยู่ทางทิศเหนือของอุทยาน ในเขตเมือง Kamikawa · เชิงเขาคือหมู่บ้านออนเซ็น <b>Sounkyo</b> ที่รอบล้อมด้วยโตรกผาหินสูงกว่า <b>100 ม.</b> รูปร่างแปลกตาแต่สวยสุด ๆ ในช่วงใบไม้เปลี่ยนสี · น้ำพุร้อนที่นี่คุณภาพดี มีทั้ง<b>บ่อสาธารณะใจกลางหมู่บ้าน</b>และบ่อในโรงแรม บางโรงแรม<b>จ่ายค่าบริการเข้าแช่ได้โดยไม่ต้องเข้าพัก</b> · โรปเวย์อยู่ด้านในสุดของหมู่บ้าน และเป็นจุดเริ่มเทรกขึ้นยอด — ต่อ Chair Lift ถึงสถานี 7 แล้วเดินอีกราว <b>1 ชม.</b> (ทริปนี้เราอยู่แค่จุดชมวิว 🟢) · กลางตุลาคมหมู่บ้านใบไม้เปลี่ยนสีเต็มที่ ขณะที่ยอดเขามักมีหิมะตกไปแล้ว ♨️🍁</div>
+    <!-- photo: add <figure class="actfig"><img src="..." alt="..." loading="lazy"><figcaption>...</figcaption></figure> -->
+    <div class="pins">
+      <div class="pinlabel">📷 Photo spots</div>
+      <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Kurodake+7th+station">
+        <span class="pn">Kurodake 7th Station <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+        <span class="lt k-ad">☀️ all-day</span>
+      </a>
+      <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Ryusei+Falls+Sounkyo">
+        <span class="pn">Ryusei &amp; Ginga Falls <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+        <span class="lt k-ad">☀️ midday</span>
+      </a>
+      <div class="pinnote">7th-station ridge panorama + chairlift colour corridor. At the falls, midday sun lights red leaves against the spray — slow shutter for silky water.</div>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="head"><h4>🍂 Biei day</h4><span class="tag t-rain">🌧️ all-weather</span><span class="tag t-easy">🟢 easy</span><span class="tag t-swap">🔄 swap w/ Furano</span></div>
+    <dl>
+      <dt>Drive</dt><dd>All local, within ~30 min of base.</dd>
+      <dt>Stops</dt><dd>Blue Pond, Shirahige Falls, and the two scenic drives — Patchwork Road (north, flat) &amp; Panorama Road (south, hilly). All 5–15 min flat walks.</dd>
+      <dt class="tim">Time</dt><dd>Flexible half or full day · zero strain. (Town colour peaks late Oct–early Nov, so mid-Oct is early — the pines &amp; snow-dusted Daisetsuzan peaks carry it.)</dd>
+      <dt>See</dt><dd>Lone trees on rolling hills, teal pond, country lanes.</dd>
+      <dt class="ons">Onsen</dt><dd>Shirogane Onsen — beside the Blue Pond. ♨️</dd>
+    </dl>
+    <figure class="actfig"><img src="https://i.ibb.co/d0cBzrJn/470138684-1111433227020386-6764846230556791781-n.jpg" alt="Biei town in autumn" width="2048" height="1314" loading="lazy" decoding="async" referrerpolicy="no-referrer"><figcaption>🍂 Biei — rolling farmland, lone trees &amp; quiet country lanes</figcaption></figure>
+    <div class="pins">
+      <div class="pinlabel">📷 Photo spots</div>
+      <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Shirogane+Blue+Pond+Biei">
+        <span class="pn">Shirogane Blue Pond <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+        <span class="lt k-sr">🌅 before 7:00</span>
+      </a>
+      <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Shirahige+Falls+Biei">
+        <span class="pn">Shirahige Waterfall <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+        <span class="lt k-ad">☀️ all-day</span>
+      </a>
+      <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Shikisai+no+Oka+Biei">
+        <span class="pn">Shikisai-no-Oka <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+        <span class="lt k-ss">🌇 sunset</span>
+      </a>
+      <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Hokusei+no+Oka+Observatory+Park+Biei">
+        <span class="pn">Hokusei-no-Oka Observatory <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+        <span class="lt k-ad">☀️ all-day</span>
+      </a>
+      <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Tree+of+Ken+and+Mary+Biei">
+        <span class="pn">Tree of Ken &amp; Mary <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+        <span class="lt k-ss">🌇 sunset</span>
+      </a>
+      <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Sanai+no+Oka+Observatory+Park+Biei">
+        <span class="pn">Sanai-no-Oka Observatory <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+        <span class="lt k-ss">🌇 sunset</span>
+      </a>
+      <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Patchwork+Road+Biei">
+        <span class="pn">Patchwork Road <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+        <span class="lt k-ss">🌇 sunset</span>
+      </a>
+      <div class="pinnote">Blue Pond = calm dawn mirror (tripod OK, light-up till 21:00 🌙). Shirahige is a 5-min walk away. Patchwork Road is the rolling hill-drive holding the lone trees (Ken &amp; Mary, Seven Stars, Mild Seven) — golden-hour side-light makes them glow. Shoot trees from the road (private fields). South of town, <b>Panorama Road</b> is the hillier sister route (~17 km, bikeable, but watch for traffic) — its best autumn stop is <b>Sanai-no-Oka Observatory Park</b>, with Daisetsuzan mountain views that rival Patchwork Road, gorgeous in evening light and stunning once the peaks get snow.</div>
+    </div>
+  </div>
+
+  <div class="act">
+    <div class="head"><h4>🧀 Furano day</h4><span class="tag t-rain">🌧️ all-weather</span><span class="tag t-easy">🟢 easy</span><span class="tag t-swap">🔄 swap w/ Biei</span></div>
+    <dl>
+      <dt>Drive</dt><dd>~25–40 min south of Biei to the Furano area.</dd>
+      <dt>Stops</dt><dd>Cheese Factory, Farm Tomita, Winery, Ningle Terrace, Seico Mart — all flat, ~15 min each.</dd>
+      <dt class="tim">Time</dt><dd>Half day usually enough · relaxed.</dd>
+      <dt>See</dt><dd>Dairy &amp; wine country, craft village, autumn fields. 🍶🍷</dd>
+      <dt class="ons">Onsen</dt><dd>Furano area onsen on the way back if time allows. ♨️</dd>
+    </dl>
+    <div class="pins">
+      <div class="pinlabel">📷 Photo spots</div>
+      <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Farm+Tomita+Nakafurano">
+        <span class="pn">Farm Tomita <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+        <span class="lt k-ad">☀️ all-day</span>
+      </a>
+      <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Jet+Coaster+Road+Kamifurano">
+        <span class="pn">Rollercoaster Road <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+        <span class="lt k-ss">🌇 sunset</span>
+      </a>
+      <div class="pinnote">Farm Tomita's tiered fields photograph well any time (autumn flowers are winding down, but the layout still shines). Rollercoaster Road is a long undulating straight — a classic vanishing-point shot, best under low golden light.</div>
+    </div>
+  </div>
+
+  <div class="seclabel"><span>Back to City</span><div class="ln"></div></div>
+
+  <div class="day">
+    <div class="n"><b>D7</b><s>Oct 22</s></div>
+    <div class="body">
+      <div class="stay">🏙️ Sapporo · hotel or Off's</div>
+      <div class="txt">🍂/🧀 A town day (Biei or Furano, whichever suits the weather), then drive back Biei → Sapporo ~3 hr. 🛍️🥩</div>
+      <span class="badge b-good">Good</span>
+    </div>
+  </div>
+
+  <div class="seclabel" id="south"><span>Onsen Country</span><div class="ln"></div><small>southern loop</small></div>
+
+  <div class="day south">
+    <div class="n"><b>D8</b><s>Oct 23</s></div>
+    <div class="body">
+      <div class="stay">♨️ Noboribetsu</div>
+      <div class="txt">Sapporo → Noboribetsu (~1.5 hr). Jigokudani Hell Valley, Ōyunuma steam, onsen soak.</div>
+      <span class="badge b-good">Good colour</span>
+      <div class="pins">
+        <div class="pinlabel">📷 Photo spots</div>
+        <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Noboribetsu+Jigokudani">
+          <span class="pn">Noboribetsu Jigokudani <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+          <span class="lt k-sr">🌅 morning</span>
+        </a>
+        <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Okei+Parking+Orofure+Pass">
+          <span class="pn">Okei P · Orofure Pass <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+          <span class="lt k-ss">🍁 side-trip</span>
+        </a>
+        <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Orofure+Pass+Observatory">
+          <span class="pn">Orofure Pass Observatory <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+          <span class="lt k-ss">🌇 Mt. Yotei view</span>
+        </a>
+        <div class="pinnote">Cold morning air = thick billowing steam against red foliage. Walk 20–30 min up to Ōyunuma pond.</div>
+      </div>
+      <div class="gtk">📖 <b>น่ารู้:</b> <b>Orofure Pass</b> (ทางหลวงหมายเลข 2) เป็นเส้นทางบนภูเขาที่เชื่อม <b>ทะเลสาบ Toya ↔ Noboribetsu Onsen</b> ตัดผ่านภูเขา Orofure ในอุทยานแห่งชาติ Shikotsu-Toya · เป็นทางลัดที่ช่วยย่นระยะ (ถ้าไม่ผ่านต้องขับอ้อมริมทะเลไกลมาก) และยังเป็น<b>เส้นทางชมใบไม้เปลี่ยนสีที่สวยมาก</b> · ระหว่างทางมีจุดจอดชมวิวเยอะ จุดที่ชมวิวได้กว้างและง่ายสุดคือ <b>Okei parking lot</b> ส่วน <b>Orofure Pass Observatory</b> ว่ากันว่าวิวสวยสุด มองเห็นภูเขาไฟ <b>Yotei</b> ได้ด้วย · เกี่ยวกับทริปเราเฉพาะถ้าวนผ่านทะเลสาบ Toya — ถ้าผ่านก็คุ้มค่าแวะ 🚗🍁</div>
+    </div>
+  </div>
+
+  <div class="day south">
+    <div class="n"><b>D9</b><s>Oct 24</s></div>
+    <div class="body">
+      <div class="stay">♨️ Jozankei</div>
+      <div class="txt">Noboribetsu → Jozankei (~2 hr). Futami Bridge, river nature trail, onsen.</div>
+      <span class="badge b-peak">Peak ✓</span>
+      <div class="pins">
+        <div class="pinlabel">📷 Photo spot</div>
+        <a class="pin" href="https://www.google.com/maps/search/?api=1&query=Futami+Tsuribashi+Jozankei">
+          <span class="pn">Futami Suspension Bridge <svg class="ei" viewBox="0 0 24 24"><use href="#ext"/></svg></span>
+          <span class="lt k-ad">☀️ all-day</span>
+        </a>
+        <div class="pinnote">Vermilion bridge + red leaves + clear Toyohira river — the magazine-cover shot 🍁. Walk the riverside trail down for a 2nd angle. Lovely in soft overcast.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day south">
+    <div class="n"><b>D10</b><s>Oct 25</s></div>
+    <div class="body">
+      <div class="stay">🏙️ Sapporo · hotel or Off's</div>
+      <div class="txt">Jozankei → Sapporo (~1 hr). Full city day — AEON, Super Tamura. 🛍️🥩</div>
+      <span class="badge b-turn">Decent</span>
+    </div>
+  </div>
+
+  <div class="seclabel"><span>Departure</span><div class="ln"></div></div>
+
+  <div class="day">
+    <div class="n"><b>D11</b><s>Oct 26</s></div>
+    <div class="body">
+      <div class="stay">✈️ Fly home</div>
+      <div class="txt">Easy morning, last shopping, return the car, fly out 20:30.</div>
+      <span class="badge b-turn">Decent</span>
+    </div>
+  </div>
+
+  <div class="seclabel"><span>🚌 Airport Bus Hotels</span><div class="ln"></div><small>step off at the door</small></div>
+
+  <p class="tnote">Hotels where the airport connector bus (連絡バス) stops <b>right at the hotel</b> — no transfer, easy with luggage. 🎫 = airport-bus tickets sold there too (handy for the ride back).</p>
+  <p class="tsub">Handy for the Oct 15 arrival (step off at the door) or any Sapporo night not at Off's. Every guide hotel is bus-reachable; these 9 stop <i>at</i> the hotel.</p>
+
+  <div class="tscroll">
+  <table class="bus">
+    <thead>
+      <tr>
+        <th>Hotel</th>
+        <th>Stop</th>
+        <th>Area</th>
+        <th>🎫</th>
+        <th>☎ 011-</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Keio Plaza Hotel Sapporo</td>
+        <td class="m">S31</td>
+        <td class="m">Sapporo Stn</td>
+        <td class="y">✅</td>
+        <td class="m">271-0111</td>
+      </tr>
+      <tr>
+        <td>ANA Crowne Plaza Sapporo</td>
+        <td class="m">S23</td>
+        <td class="m">Sapporo Stn</td>
+        <td class="n">–</td>
+        <td class="m">221-4411</td>
+      </tr>
+      <tr>
+        <td>Hotel Monterey Edelhof Sapporo</td>
+        <td class="m">S22</td>
+        <td class="m">Sapporo Stn</td>
+        <td class="n">–</td>
+        <td class="m">242-7111</td>
+      </tr>
+      <tr>
+        <td>Sapporo Grand Hotel</td>
+        <td class="m">S26</td>
+        <td class="m">Sapporo Stn</td>
+        <td class="n">–</td>
+        <td class="m">261-3311</td>
+      </tr>
+      <tr>
+        <td>Grand Mercure Sapporo Odori Park</td>
+        <td class="m">S30</td>
+        <td class="m">Odori</td>
+        <td class="y">✅</td>
+        <td class="m">271-2711</td>
+      </tr>
+      <tr>
+        <td>Sapporo View Hotel Odori Koen</td>
+        <td class="m">S28</td>
+        <td class="m">Odori</td>
+        <td class="n">–</td>
+        <td class="m">261-0111</td>
+      </tr>
+      <tr>
+        <td>Hotel Resol Trinity Sapporo</td>
+        <td class="m">S27</td>
+        <td class="m">Odori</td>
+        <td class="y">✅</td>
+        <td class="m">241-9269</td>
+      </tr>
+      <tr>
+        <td>Sapporo Prince Hotel</td>
+        <td class="m">S29</td>
+        <td class="m">Odori (W)</td>
+        <td class="y">✅</td>
+        <td class="m">241-1111</td>
+      </tr>
+      <tr>
+        <td>Premier Hotel TSUBAKI Sapporo</td>
+        <td class="m">S19</td>
+        <td class="m">Nakajima Park</td>
+        <td class="y">✅</td>
+        <td class="m">821-1111</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="legend">
+    <span class="b-peak">Peak</span>
+    <span class="b-good">Good</span>
+    <span class="b-turn">Turning</span>
+    <span class="b-flex">Flexible</span>
+  </div>
+
+  <div class="group">
+    <h3>👥 Our group · 7 travellers</h3>
+    <div class="roster">
+      <span class="member lead"><span class="ava">D</span>Dew 👑 <span class="htag lead">tour head</span></span>
+      <span class="member"><span class="ava">P</span>Paae</span>
+      <span class="member"><span class="ava">P</span>Ploy</span>
+      <span class="member"><span class="ava">M</span>Moo</span>
+      <span class="member host"><span class="ava">O</span>Off <span class="htag">🏠 host</span></span>
+      <span class="member"><span class="ava">K</span>Keng</span>
+      <span class="member"><span class="ava">K</span>Kook</span>
+    </div>
+    <div class="gnote">🏠 Off hosts our Sapporo nights (OF's place). Everyone arrives individually &amp; meets in Sapporo. 🚌</div>
+  </div>
+
+  <footer>
+    🍁 Hokkaido group plan · Beta v0.6<br>
+    Flexible by design — final picks happen each morning.<br>
+    📷 Photo pins link to Google Maps · ♨️ onsen each trek evening · check ropeway status &amp; weather on the day.
+  </footer>
+
+</div>
+</body>
+</html>

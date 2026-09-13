@@ -154,9 +154,11 @@
   .mlist li b{color:var(--ink);font-weight:600;}
   .mlist li .z{color:var(--faint);}
 
+  /* the map gets more room than the text column */
+  .mapwide{max-width:1040px;}
   .mapcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px;
-    margin:14px 0 6px;box-shadow:0 2px 14px rgba(60,40,20,.06);}
-  .mapcard svg{width:100%;height:auto;display:block;}
+    margin:14px 0 6px;box-shadow:0 2px 14px rgba(60,40,20,.06);overflow-x:auto;}
+  .mapcard svg{width:100%;min-width:700px;height:auto;display:block;}
   .place,.base-lbl,.sub-lbl,.drive,.inset-town{paint-order:stroke;stroke:var(--card);stroke-width:4;
     stroke-linejoin:round;font-family:var(--ui);font-weight:600;}
   .place{font-size:14px;fill:var(--ink);}
@@ -168,11 +170,12 @@
   .dsm{font-size:10px;fill:var(--muted);stroke-width:3;}
   .jp{font-family:var(--jp);fill:var(--coast);opacity:.45;}
   .compass{font-size:12px;font-weight:600;fill:var(--faint);font-family:var(--ui);}
-  .ztag{font-size:11px;font-weight:600;fill:var(--photo);font-family:var(--ui);}
+  .ztag{font-size:11.5px;font-weight:600;fill:var(--photo);font-family:var(--ui);
+    paint-order:stroke;stroke:var(--card);stroke-width:3.5;stroke-linejoin:round;}
   .leaderline{stroke:var(--leader);stroke-width:1;fill:none;opacity:.75;}
-  .inset-title{font-size:13.5px;font-weight:600;fill:var(--ink);font-family:var(--ui);}
-  .inset-legend{font-size:12.5px;fill:var(--ink);font-family:var(--ui);}
-  .inset-tag{font-size:10.5px;fill:var(--muted);font-family:var(--ui);}
+  .inset-title{font-size:14.5px;font-weight:600;fill:var(--ink);font-family:var(--ui);}
+  .inset-legend{font-size:13.5px;fill:var(--ink);font-family:var(--ui);}
+  .inset-tag{font-size:11.2px;fill:var(--muted);font-family:var(--ui);}
   .inset-town{font-size:12.5px;fill:var(--base);stroke:#FCFAF5;stroke-width:3;}
   .photonum{font-size:11px;font-weight:600;fill:#fff;font-family:var(--ui);}
   .dnum{font-family:var(--ui);font-size:10.5px;font-weight:700;fill:#fff;}

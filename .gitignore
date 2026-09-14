@@ -1,0 +1,8 @@
+# Full-size photo originals — kept locally, never committed.
+# Git stores every version of a binary forever, so a handful of 3-5 MB
+# originals would bloat the clone permanently. The web-sized versions
+# (lowercase names) are the ones that ship.
+assets/photos/Mt. Asahidake.jpg
+assets/photos/Mt.Kurodake.jpg
+assets/photos/Sounkyo Onsen.jpg
+assets/photos/_originals/

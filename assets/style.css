@@ -155,13 +155,13 @@
   .mlist li .z{color:var(--faint);}
 
   /* photo strip inside a detail block */
-  .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:6px;margin-top:10px;}
-  .shots a{display:block;border-radius:9px;overflow:hidden;border:1px solid var(--line);
+  .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:7px;margin-top:10px;}
+  .shots a{display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line);
     background:#F2ECE0;line-height:0;}
-  .shots img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block;
-    transition:transform .28s ease;}
-  .shots a:hover img,.shots a:focus-visible img{transform:scale(1.05);}
-  .shots.tall img{aspect-ratio:3/4;}
+  /* single photo keeps its own proportions; a card with two matches them up */
+  .shots img{width:100%;height:auto;display:block;transition:transform .3s ease;}
+  .shots.even img{aspect-ratio:3/2;object-fit:cover;}
+  .shots a:hover img,.shots a:focus-visible img{transform:scale(1.04);}
   .credit{font-size:10px;color:var(--faint);margin-top:6px;letter-spacing:.2px;}
   .credit a{color:var(--faint);}
 

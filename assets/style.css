@@ -167,6 +167,8 @@
     stroke-linejoin:round;font-family:var(--ui);font-weight:600;}
   .sub-lbl{font-size:11px;font-weight:500;fill:var(--photo);stroke-width:3.2;}
   .drive{font-size:11.5px;fill:#5A4E30;stroke-width:3.6;}
+  .edrive{font-size:9px;font-weight:600;fill:#6B5E42;font-family:var(--ui);
+    paint-order:stroke;stroke:#FCFAF5;stroke-width:2.8;stroke-linejoin:round;}
   .dsm{font-size:10px;fill:var(--muted);stroke-width:3;}
   .jp{font-family:var(--jp);fill:var(--coast);opacity:.45;}
   .compass{font-size:12px;font-weight:600;fill:var(--faint);font-family:var(--ui);}

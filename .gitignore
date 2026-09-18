@@ -6,3 +6,8 @@ assets/photos/Mt. Asahidake.jpg
 assets/photos/Mt.Kurodake.jpg
 assets/photos/Sounkyo Onsen.jpg
 assets/photos/_originals/
+
+# Booking screenshots and confirmations — contain reservation numbers,
+# email addresses and phone numbers. This repo is public; never commit them.
+Others/
+*_confirmation*

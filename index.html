@@ -48,8 +48,8 @@
   <!-- roads -->
   <g fill="none" stroke="var(--road)" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round">
     <path d="M193,259 C246,224 303,183 361,130"/>
-    <path d="M361,130 L379,162 L393,149"/>
-    <path d="M393,149 C424,130 447,130 474,139"/>
+    <path d="M361,130 L379,162"/>
+    <path d="M379,162 C420,132 447,130 474,139"/>
     <path d="M163,275 C154,284 146,289 140,296"/>
     <path d="M140,296 C129,314 117,330 110,343"/>
     <path d="M110,343 L152,352 L160,360"/>
@@ -59,8 +59,8 @@
   <path d="M474,139 C418,107 338,130 290,174 C244,220 194,250 163,275"
         fill="none" stroke="#C98A5E" stroke-width="4.2" stroke-linecap="round"/>
   <g fill="none" stroke="var(--road)" stroke-width="2.2" stroke-dasharray="1 4.5" stroke-linecap="round">
-    <path d="M393,149 C416,142 432,144 444,150"/>
-    <path d="M393,149 L403,178 L410,190"/>
+    <path d="M379,162 C408,150 428,146 444,150"/>
+    <path d="M379,162 L403,178 L410,190"/>
     <path d="M474,139 L460,146"/>
     <path d="M160,360 L152,352"/>
   </g>
@@ -95,10 +95,9 @@
   <circle cx="134" cy="236" r="6.5" fill="var(--city)" stroke="#fff" stroke-width="2.2"/>
   <circle cx="193" cy="259" r="7.5" fill="var(--city)" stroke="#fff" stroke-width="2.4"/>
   <circle cx="361" cy="130" r="5.5" fill="var(--ref)" stroke="#fff" stroke-width="2"/>
-  <circle cx="379" cy="162" r="6" fill="var(--city)" stroke="#fff" stroke-width="2.2"/>
+  <circle cx="379" cy="162" r="14" fill="none" stroke="var(--base)" stroke-width="1.8" opacity=".45"/>
+  <circle cx="379" cy="162" r="8" fill="var(--base)" stroke="#fff" stroke-width="2.8"/>
   <circle cx="403" cy="178" r="5" fill="var(--photo)" stroke="#fff" stroke-width="2"/>
-  <circle cx="393" cy="149" r="14" fill="none" stroke="var(--base)" stroke-width="1.8" opacity=".45"/>
-  <circle cx="393" cy="149" r="8" fill="var(--base)" stroke="#fff" stroke-width="2.8"/>
   <circle cx="474" cy="139" r="7.5" fill="var(--onsen)" stroke="#fff" stroke-width="2.4"/>
   <circle cx="160" cy="360" r="7" fill="var(--onsen)" stroke="#fff" stroke-width="2.4"/>
   <circle cx="163" cy="275" r="7" fill="var(--onsen)" stroke="#fff" stroke-width="2.4"/>
@@ -118,7 +117,8 @@
   <text x="206" y="252" class="place" text-anchor="start">Sapporo</text>
 
   <text x="351" y="122" class="place" text-anchor="end" font-size="13" fill="var(--muted)">Asahikawa</text>
-  <text x="371" y="180" class="place" text-anchor="end" font-size="13">Biei</text>
+  <text x="360" y="188" class="base-lbl" text-anchor="end">★ Biei · base</text>
+  <text x="360" y="206" class="sub-lbl" text-anchor="end">🏡 nights 1–3 · D3–D6</text>
 
   <text x="260" y="326" class="place" text-anchor="start" font-size="13">✈️ New Chitose</text>
 
@@ -132,18 +132,15 @@
   <line x1="34" y1="485" x2="408" y2="485" stroke="var(--line)" stroke-width="1"/>
 
   <g fill="none" stroke="var(--road)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M120,520 L88,572"/>
     <path d="M88,572 L74,612 L66,648"/>
     <path d="M88,572 L116,642 L136,686 L156,736"/>
     <path d="M88,572 L58,546"/>
-    <path d="M120,520 L176,532"/>
+    <path d="M88,572 L176,532"/>
   </g>
 
-  <circle cx="120" cy="520" r="13" fill="none" stroke="var(--base)" stroke-width="1.5" opacity=".45"/>
-  <circle cx="120" cy="520" r="7" fill="var(--base)" stroke="#fff" stroke-width="2.2"/>
-  <text x="120" y="502" class="inset-town" text-anchor="middle">Higashikawa</text>
-  <circle cx="88" cy="572" r="5.5" fill="var(--city)" stroke="#fff" stroke-width="2"/>
-  <text x="99" y="566" class="inset-town" text-anchor="start" fill="var(--ink)">Biei</text>
+  <circle cx="88" cy="572" r="13" fill="none" stroke="var(--base)" stroke-width="1.5" opacity=".45"/>
+  <circle cx="88" cy="572" r="7" fill="var(--base)" stroke="#fff" stroke-width="2.2"/>
+  <text x="88" y="552" class="inset-town" text-anchor="middle">Biei · base</text>
 
   <circle cx="58" cy="546" r="10" fill="var(--photo)" stroke="#fff" stroke-width="2"/><text x="58" y="550" class="photonum" text-anchor="middle">2</text>
   <circle cx="74" cy="612" r="10" fill="var(--photo)" stroke="#fff" stroke-width="2"/><text x="74" y="616" class="photonum" text-anchor="middle">7</text>
@@ -154,8 +151,7 @@
   <circle cx="176" cy="532" r="10" fill="var(--photo)" stroke="#fff" stroke-width="2"/><text x="176" y="536" class="photonum" text-anchor="middle">6</text>
 
   <!-- leg drive times along the central roads -->
-  <text x="152" y="516" class="edrive" text-anchor="start">~45 min</text>
-  <text x="112" y="550" class="edrive" text-anchor="start">~20 min</text>
+  <text x="118" y="544" class="edrive" text-anchor="start">~1 hr 10</text>
   <text x="70" y="570" class="edrive" text-anchor="end">~8 min</text>
   <text x="68" y="594" class="edrive" text-anchor="end">~10 min</text>
   <text x="58" y="632" class="edrive" text-anchor="end">~5 min</text>
@@ -164,19 +160,19 @@
   <text x="154" y="706" class="edrive" text-anchor="start">~30 min</text>
 
   <text x="214" y="520" class="inset-legend"><tspan font-weight="600" fill="var(--photo)">1</tspan>  Shin'ei-no-Oka</text>
-  <text x="214" y="520" class="inset-tag" dy="16">🌅 D4·D6 dawn · 🌇 sunset · 🚗 ~35 min</text>
+  <text x="214" y="520" class="inset-tag" dy="16">🌅 D4·D6 dawn · 🌇 sunset · 🚗 ~15 min</text>
   <text x="214" y="568" class="inset-legend"><tspan font-weight="600" fill="var(--photo)">2</tspan>  Hokusei-no-Oka</text>
-  <text x="214" y="568" class="inset-tag" dy="16">🌇 D3 sunset · 🚗 ~28 min</text>
+  <text x="214" y="568" class="inset-tag" dy="16">🌇 D3 sunset · 🚗 ~8 min</text>
   <text x="214" y="616" class="inset-legend"><tspan font-weight="600" fill="var(--photo)">3</tspan>  Blue Pond</text>
-  <text x="214" y="616" class="inset-tag" dy="16">💧 D5 · gates 7:00 · 🚗 ~40 min</text>
+  <text x="214" y="616" class="inset-tag" dy="16">💧 D5 · gates 7:00 · 🚗 ~20 min</text>
   <text x="214" y="664" class="inset-legend"><tspan font-weight="600" fill="var(--photo)">4</tspan>  Shirahige Falls</text>
-  <text x="214" y="664" class="inset-tag" dy="16">🌇 lit sunset–21:00 ★ · 🚗 ~45 min</text>
+  <text x="214" y="664" class="inset-tag" dy="16">🌇 lit sunset–21:00 ★ · 🚗 ~25 min</text>
   <text x="214" y="712" class="inset-legend"><tspan font-weight="600" fill="var(--photo)">5</tspan>  Bogakudai · Ryounkaku</text>
-  <text x="214" y="712" class="inset-tag" dy="16">🥾 ♨️ D5 · 1,280 m · 🚗 ~1 hr 15</text>
+  <text x="214" y="712" class="inset-tag" dy="16">🥾 ♨️ D5 · 1,280 m · 🚗 ~55 min</text>
   <text x="214" y="760" class="inset-legend"><tspan font-weight="600" fill="var(--photo)">6</tspan>  Asahidake · Sugatami</text>
-  <text x="214" y="760" class="inset-tag" dy="16">🚡 D4 · 45 min loop · 🚗 ~45 min</text>
+  <text x="214" y="760" class="inset-tag" dy="16">🚡 D4 · 45 min loop · 🚗 ~1 hr 10</text>
   <text x="214" y="808" class="inset-legend"><tspan font-weight="600" fill="var(--photo)">7</tspan>  Shikisai-no-Oka</text>
-  <text x="214" y="808" class="inset-tag" dy="16">🌸 D4 · free from Oct 1 · 🚗 ~30 min</text>
+  <text x="214" y="808" class="inset-tag" dy="16">🌸 D4 · free from Oct 1 · 🚗 ~10 min</text>
 
   <!-- ============ PANEL B · SOUTH ============ -->
   <rect x="452" y="444" width="414" height="440" rx="14" fill="#FCFAF5" stroke="var(--line)" stroke-width="1.5"/>
@@ -272,7 +268,7 @@
       </tbody>
     </table>
   </div>
-  <p class="tnote">Party size: <b>D1–D2</b> solo 👤 · <b>D3–D7</b> seven 👥 · <b>D8–D11</b> two 👥. Four pre-dawn starts — D5, D7, D9, D10.</p>
+  <p class="tnote">Party size: <b>D1–D2</b> solo 👤 · <b>D3–D7</b> seven 👥 · <b>D8–D11</b> two 👥. Four pre-dawn starts — D5 (05:00), D7, D9, D10.</p>
 
   <div class="seclabel" id="solo"><span>Solo Start</span><div class="ln"></div><small>Sapporo &amp; Otaru · Of's place</small></div>
 
@@ -342,7 +338,7 @@
       </div>
       <div class="lite dusk">
         <div class="lh"><span class="lk">Sunset</span> <b>Hokusei-no-Oka</b> <span class="jpn">北西の丘</span> <time>16:45</time></div>
-        <p>Your first Biei sunset, and the closest one to base — a pyramid observation deck in north Biei, <b>~28 min</b> from Higashikawa. Easy to reach on an arrival day when everyone is tired from the drive.</p>
+        <p>Your first Biei sunset, and the closest one to base — a pyramid observation deck in north Biei, <b>~8 min</b> from your Biei base. Easy to reach on an arrival day when everyone is tired from the drive.</p>
         <p style="margin-top:4px">Blue hour holds to about <b>17:15</b>, which lands you at check-in for <b>17:45</b> without rushing. <span class="z">Shin'ei-no-Oka is saved for tomorrow so you're not shooting the same hill twice.</span></p>
       </div>
       <details class="more">
@@ -368,7 +364,7 @@
         <dl>
           <dt>Patchwork Rd</dt><dd><span class="jpn">パッチワークの路</span> — Zerubu Hill, Ken &amp; Mary Tree, Seven Stars Tree, Biei Shrine (north Biei, all within 10 min of each other)</dd>
           <dt>Hokusei-no-Oka</dt><dd><span class="jpn">北西の丘</span> — pyramid observation deck, lavender field views</dd>
-          <dt>Higashikawa</dt><dd>Officially "Town of Photography" <span class="jpn">写真の町</span> — declared in 1985, hosts the international photo festival. Woodcraft studios too</dd>
+          <dt>Biei</dt><dd>One of the hundred <span class="jpn">「日本で最も美しい村」</span> — the most beautiful villages of Japan. Patchwork Road runs north of town, Panorama Road south</dd>
         </dl>
       </div>
       <div class="lite dusk">
@@ -393,7 +389,7 @@
           <span class="hint">⤢ unfold</span></label>
       </div>
       <p class="credit">📷 ไกด์ท้องถิ่น · Suparu Photography — คลิกเพื่อดูภาพชุดเต็ม</p>
-      <div class="times"><b>08:00</b> depart (~45 min) · <b>09:00</b> ropeway up 🚡 · <b>09:20–11:00</b> Sugatami loop · <b>11:30</b> lunch at the base station · <b>14:00</b> down to Biei (~1 hr 15) · <b>15:30</b> Shikisai-no-Oka · <b>16:30</b> Shin'ei-no-Oka · <b>17:20</b> back</div>
+      <div class="times"><b>07:45</b> depart (~1 hr 10) · <b>09:00</b> ropeway up 🚡 · <b>09:20–11:00</b> Sugatami loop · <b>11:30</b> lunch at the base station · <b>14:00</b> down to Biei (~1 hr 15) · <b>15:30</b> Shikisai-no-Oka · <b>16:30</b> Shin'ei-no-Oka · <b>17:20</b> back</div>
       <div class="plc">
         <dl>
           <dt>Sugatami Pond</dt><dd><span class="jpn">姿見の池</span> — 1.7 km, ~1 hr, flat. The ropeway is the only one in Japan running above the treeline, 1,100 m → 1,600 m in 10 min</dd>
@@ -404,9 +400,9 @@
       </div>
       <div class="lite">
         <div class="lh"><span class="lk">Sunrise</span> <b>Shin'ei-no-Oka, facing east</b> <time>05:48</time> <span class="z">opt-in</span></div>
-        <p>The one dawn subject within reach of base: the <b>Daisetsu and Tokachidake ranges take first light</b> across the Biei hills. ~35 min from Higashikawa, free, and the gate is open from sunrise.</p>
-        <p style="margin-top:4px"><b>It also fixes the queue problem.</b> Leave 05:00, shoot until 06:15, then run the ~1 hr 15 across to Asahidake and you are at the ropeway by <b>07:30</b> — well ahead of the Sunday crowd the warning below is about.</p>
-        <p style="margin-top:4px;color:var(--faint)">Costs breakfast and a 05:00 alarm for seven people. This is the <b>same shot as D6</b>, so do it on whichever morning suits the group — not both.</p>
+        <p>The one dawn subject within reach of base: the <b>Daisetsu and Tokachidake ranges take first light</b> across the Biei hills. ~15 min from your Biei base, free, and the gate is open from sunrise.</p>
+        <p style="margin-top:4px"><b>It also fixes the queue problem.</b> Leave 05:15, shoot until 06:15, then run the ~1 hr 15 across to Asahidake and you are at the ropeway by <b>07:40</b> — well ahead of the Sunday crowd the warning below is about.</p>
+        <p style="margin-top:4px;color:var(--faint)">Costs breakfast and a 05:15 alarm for seven people. This is the <b>same shot as D6</b>, so do it on whichever morning suits the group — not both.</p>
       </div>
       <div class="lite dusk">
         <div class="lh"><span class="lk">Sunset</span> <b>Shin'ei-no-Oka</b> <span class="jpn">新栄の丘</span> <time>16:43</time> <span class="star">★</span></div>
@@ -455,10 +451,10 @@
           <span class="hint">⤢ unfold</span></label>
       </div>
       <p class="credit">📷 ไกด์ท้องถิ่น · Suparu Photography — คลิกเพื่อดูภาพชุดเต็ม</p>
-      <div class="times"><b>04:20</b> pre-dawn out ⏰ · <b>05:30</b> Senbō Pass · <b>05:48</b> sunrise · <b>06:15</b> leave · <b>06:50</b> Blue Pond · <b>08:30</b> Shirahige Falls · <b>09:45–11:15</b> Bogakudai · <b>11:45</b> Ryounkaku ♨️ · <b>14:00</b> descend · <b>15:30</b> back</div>
+      <div class="times"><b>05:00</b> pre-dawn out ⏰ · <b>05:30</b> Senbō Pass · <b>05:48</b> sunrise · <b>06:15</b> leave · <b>06:50</b> Blue Pond · <b>08:30</b> Shirahige Falls · <b>09:45–11:15</b> Bogakudai · <b>11:45</b> Ryounkaku ♨️ · <b>14:00</b> descend · <b>15:30</b> back</div>
       <div class="plc">
         <dl>
-          <dt>Senbō Pass</dt><dd><span class="jpn">千望峠</span> — Kamifurano, ~1 hr 10 from base. A quiet roadside deck with the whole Tokachidake range laid out in front of you, lit head-on at dawn 📷</dd>
+          <dt>Senbō Pass</dt><dd><span class="jpn">千望峠</span> — Kamifurano, <b>~30 min from Biei</b>. A quiet roadside deck with the whole Tokachidake range laid out in front of you, lit head-on at dawn 📷</dd>
           <dt>Blue Pond</dt><dd><span class="jpn">青い池</span> — gates open <b>7:00</b>. Arrive first and you get mirror-calm water with nobody in frame. Not naturally occurring: it formed behind a mudflow dam in the 1990s, and the blue comes from aluminium in the groundwater</dd>
           <dt>Shirahige Falls</dt><dd><span class="jpn">白ひげの滝</span> — 30 m, ~3 km upstream. Spring water pours straight out of the cliff face. The Blue River bridge below is the vantage point 💦</dd>
           <dt>Bogakudai</dt><dd><span class="jpn">望岳台</span> — volcanic gravel slopes, 20–40 min strolls, wide open views back down the valley</dd>
@@ -468,7 +464,7 @@
       <div class="lite">
         <div class="lh"><span class="lk">Sunrise</span> <b>Senbō Pass</b> <span class="jpn">千望峠</span> <time>05:48</time> <span class="star">★</span></div>
         <p>The Tokachidake range front-lit across the Kamifurano basin. Then you drive on and reach <b>Blue Pond at 06:50, ahead of the 7:00 gate</b> — two subjects in one morning, and the pond to yourself.</p>
-        <p style="margin-top:4px;color:var(--faint)">Costs a 04:20 departure. If that's too much, skip Senbō and leave at 06:15 for the pond alone.</p>
+        <p style="margin-top:4px;color:var(--faint)">Costs a 05:00 departure — <b>40 minutes later than the old plan</b>, because Senbō is half an hour from Biei rather than the 1 hr 10 it was from Higashikawa. If it is still too much, skip Senbō and leave at 06:20 for the pond alone.</p>
       </div>
       <div class="lite none">
         <div class="lh"><span class="lk">Why not here</span> <b>Blue Pond &amp; Shirahige can't do sunrise</b></div>
@@ -549,7 +545,7 @@
       </div>
       <div class="lite">
         <div class="lh"><span class="lk">Sunrise</span> <b>Shin'ei-no-Oka, facing east</b> <time>05:50</time> <span class="star">★</span> <span class="z">optional</span></div>
-        <p>Your last Biei morning — the Daisetsu and Tokachidake ranges take first light across the hills. Costs a 05:00 alarm and a 35-minute drive.</p>
+        <p>Your last Biei morning — the Daisetsu and Tokachidake ranges take first light across the hills. Costs a 05:20 alarm and a 15-minute drive now that you are based in Biei itself.</p>
         <p style="margin-top:4px"><b>With seven people, make it opt-in:</b> photographers take one car, everyone else sleeps and meets at breakfast. Push departure to 09:30.</p>
       </div>
       <div class="lite none">
@@ -844,7 +840,7 @@
       </tbody>
     </table>
   </div>
-  <p class="tnote">Four pre-dawn starts: D5 (04:20), D7 (04:45), D9 (05:15) and D10 (04:45). D7 and D10 are the two worth the alarm.</p>
+  <p class="tnote">Four pre-dawn starts: D5 (05:00), D7 (04:45), D9 (05:15) and D10 (04:45). D7 and D10 are the two worth the alarm.</p>
 
   <div class="seclabel" id="cost"><span>Expenses</span><div class="ln"></div><small>booked so far</small></div>
 
@@ -973,7 +969,8 @@
     <li><span>🚗</span><div><a href="https://www.timescar-rental.com/en/price/studless.html" target="_blank" rel="noopener">Times CAR RENTAL — studless winter equipment areas</a><br><em>Fleets fit studless as standard November–April. Our pickup is Oct 17, so they were requested and paid for.</em></div></li>
     <li><span>🌅</span><div>National Astronomical Observatory of Japan<br><em>All sunrise and sunset times, adjusted per location for longitude, latitude and altitude.</em></div></li>
   </ul>
-  <p class="tnote">Drive times are either quoted in the itinerary above or reconciled against it — they are planning estimates, not measured. Verify the passes locally before committing to a pre-dawn alarm.</p>
+  <p class="tnote">Drive times are either quoted in the itinerary above or reconciled against it — they are planning estimates, not measured. Verify the passes locally before committing to a pre-dawn alarm.<br>
+    ⚠️ <b>The base moved from Higashikawa to Biei</b>, and every "from base" figure was re-derived accordingly. Two departures shifted as a result: <b>D5 is now 05:00 instead of 04:20</b>, because Senbō Pass is about half an hour from Biei rather than the 1 hr 10 it was from Higashikawa; and <b>D4 is now 07:45 instead of 08:00</b>, because Asahidake is further from Biei than it was from Higashikawa. Those two are arithmetic off the new distances, not measured drives — worth sanity-checking with Of before you set an alarm on them.</p>
 
   <footer>Hokkaido · Autumn 2026 · Plan V7<br>Oct 15–25 🍁</footer>
 

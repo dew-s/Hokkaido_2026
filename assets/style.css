@@ -130,7 +130,7 @@
   table.sum .z{color:var(--faint);font-size:10.5px;}
 
   /* expense tables */
-  table.cost{min-width:760px;}
+  table.cost{min-width:580px;}
   table.cost td{font-size:11.5px;line-height:1.5;}
   table.cost td:first-child{white-space:nowrap;}
   table.cost td:first-child b{display:block;font-family:var(--dis);font-weight:600;font-size:12.5px;}

@@ -182,12 +182,23 @@
 
   /* photo strip inside a detail block */
   .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:7px;margin-top:10px;}
-  .shots a{display:block;border-radius:10px;overflow:hidden;border:1px solid var(--line);
-    background:#F2ECE0;line-height:0;}
-  /* single photo keeps its own proportions; a card with two matches them up */
-  .shots img{width:100%;height:auto;display:block;transition:transform .3s ease;}
-  .shots.even img{aspect-ratio:3/2;object-fit:cover;}
-  .shots a:hover img,.shots a:focus-visible img{transform:scale(1.04);}
+
+  /* click a photo to unfold the full composite in place */
+  .shot{display:block;position:relative;border-radius:10px;overflow:hidden;
+    border:1px solid var(--line);background:#F2ECE0;line-height:0;cursor:zoom-in;}
+  .shot input{position:absolute;opacity:0;width:0;height:0;}
+  .shot img{width:100%;height:auto;display:block;transition:transform .3s ease;}
+  .shots.even .shot .hero{aspect-ratio:3/2;object-fit:cover;}
+  /* the unfolded image must keep its own tall proportions, never be cropped */
+  .shot .full{display:none;aspect-ratio:auto;object-fit:contain;}
+  .shot:hover .hero{transform:scale(1.04);}
+  .shot .hint{position:absolute;bottom:6px;right:6px;line-height:1;font-size:9.5px;
+    font-weight:600;color:#fff;background:rgba(32,24,18,.62);padding:3px 7px;border-radius:20px;
+    letter-spacing:.3px;pointer-events:none;}
+  .shot:has(input:checked){grid-column:1/-1;cursor:zoom-out;}
+  .shot:has(input:checked) .hero{display:none;}
+  .shot:has(input:checked) .full{display:block;}
+  .shot:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px;}
   .credit{font-size:10px;color:var(--faint);margin-top:6px;letter-spacing:.2px;}
   .credit a{color:var(--faint);}
 

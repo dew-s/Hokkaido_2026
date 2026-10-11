@@ -1,6 +1,6 @@
 # Hokkaido 2026
 
-Autumn trip plan · Oct 15–25, 2026 · Sapporo → Higashikawa → Sōunkyō → Jozankei → Lake Tōya → Noboribetsu → Sapporo
+Autumn trip plan · Oct 15–26, 2026 · Sapporo → Higashikawa → Sōunkyō → Jozankei → Lake Tōya → Noboribetsu → Sapporo
 
 **Live:** https://dew-s.github.io/Hokkaido_2026/
 

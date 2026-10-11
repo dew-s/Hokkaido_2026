@@ -38,10 +38,16 @@
 
   nav{position:sticky;top:0;z-index:20;background:rgba(251,247,240,.92);backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);padding:10px 0;}
-  nav .navin{max-width:680px;margin:0 auto;padding:0 18px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+  /* one row at every width; on a phone it scrolls sideways instead of wrapping onto a second line */
+  nav .navin{max-width:680px;margin:0 auto;padding:0 18px;display:flex;gap:8px;
+    overflow-x:auto;scrollbar-width:none;}
+  nav .navin::-webkit-scrollbar{display:none;}
   nav a{font-size:12px;font-weight:500;color:var(--muted);text-decoration:none;padding:5px 13px;
-    border:1px solid var(--line);border-radius:30px;background:var(--card);}
+    border:1px solid var(--line);border-radius:30px;background:var(--card);white-space:nowrap;flex-shrink:0;}
+  nav a:first-child{margin-left:auto;}
+  nav a:last-child{margin-right:auto;}
   nav a:active{transform:scale(.96);}
+  nav a.now{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600;}
 
   .seclabel{display:flex;align-items:center;gap:10px;margin:32px 0 14px;scroll-margin-top:60px;}
   .seclabel span{font-family:var(--dis);font-weight:600;font-size:17px;white-space:nowrap;}
@@ -50,7 +56,9 @@
 
   .day{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px 16px;margin-bottom:11px;
     display:flex;gap:14px;align-items:flex-start;scroll-margin-top:60px;}
-  .day:target{border-color:var(--accent);box-shadow:0 0 0 3px var(--accentbg);}
+  .day:target,.day.today{border-color:var(--accent);box-shadow:0 0 0 3px var(--accentbg);}
+  .day.today .n::before{content:"Today";display:block;font-size:9px;font-weight:700;letter-spacing:.6px;
+    text-transform:uppercase;color:#fff;background:var(--accent);border-radius:20px;padding:1px 0;margin-bottom:5px;}
   .day .n{flex-shrink:0;width:48px;text-align:center;}
   .day .n b{display:block;font-family:var(--dis);font-weight:600;font-size:15px;}
   .day .n s{display:block;font-size:10px;color:var(--faint);text-decoration:none;margin-top:1px;}
@@ -76,7 +84,8 @@
   .plc dt{white-space:nowrap;font-weight:600;color:var(--photo);}
   .plc dd{color:var(--muted);line-height:1.55;}
   .plc dd b{color:var(--ink);font-weight:600;}
-  .plc dd .jpn{font-family:var(--jp);color:var(--coast);}
+  /* matched against road signs and Google Maps, so it has to be legible, not decorative */
+  .plc dd .jpn{font-family:var(--jp);color:#85735A;}
   .plc dd .z{color:var(--faint);}
   .plc dt a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);}
   .plc dt a:hover{text-decoration-color:var(--photo);}
@@ -136,6 +145,8 @@
   table.sum td.bl div{display:flex;gap:6px;align-items:baseline;white-space:nowrap;}
   table.sum td.bl i{font-style:normal;font-size:9px;color:var(--faint);width:46px;flex-shrink:0;
     text-transform:uppercase;letter-spacing:.4px;}
+  table.sum td.bl div.e i{opacity:.45;}
+  table.sum tr.today td{background:var(--accentbg);}
   table.sum .star{color:var(--good);letter-spacing:-1px;}
   table.sum .z{color:var(--faint);font-size:10.5px;}
 
@@ -257,3 +268,39 @@
   .mline.lg{background:#C98A5E;}
 
   footer{text-align:center;margin-top:40px;font-size:11px;color:var(--faint);line-height:1.7;}
+
+  /* ---------- phones ---------- */
+  @media (max-width:560px){
+    /* day number moves from a side column to a strip on top, giving the text the full card width */
+    .day{flex-direction:column;gap:6px;padding:13px 14px;}
+    .day .n{width:auto;display:flex;align-items:baseline;gap:7px;text-align:left;}
+    .day .n s,.day .n i{display:inline;margin:0;font-size:11px;}
+    .day .n u{display:inline-block;margin:0 0 0 auto;padding:1px 9px;align-self:center;}
+    .day.today .n::before{display:inline-block;padding:1px 8px;margin:0;align-self:center;}
+
+    /* read at arm's length in a moving car: one size up */
+    .day .txt{font-size:14px;}
+    .day .times,.plc dl,.lite,.warn,.mlist li{font-size:12.5px;}
+    .lite .lh b{font-size:13px;}
+
+    /* place name above its description, instead of squeezing the description into a strip */
+    .plc dl{display:block;}
+    .plc dt{margin-top:9px;white-space:normal;}
+    .plc dt:first-child{margin-top:0;}
+    .plc dd{margin-top:1px;}
+
+    /* at a glance: each day becomes a compact card, so every light time is visible without side-scrolling */
+    table.sum{min-width:0;}
+    table.sum thead{display:none;}
+    table.sum,table.sum tbody{display:block;}
+    table.sum tr{display:grid;grid-template-columns:54px 1fr;column-gap:10px;padding:10px 8px;
+      border-bottom:1px solid var(--line);}
+    table.sum tr:last-child{border-bottom:0;}
+    table.sum tr.today{background:var(--accentbg);border-radius:10px;}
+    table.sum td,table.sum tr.today td{display:block;padding:0;border:0;background:none;}
+    table.sum td:first-child{grid-row:1 / span 3;}
+    table.sum td:nth-child(3){font-size:12.5px;color:var(--ink);}
+    table.sum td.bl{margin-top:5px;}
+    table.sum td.bl div{white-space:normal;}
+    table.sum td.bl div.e{display:none;}
+  }

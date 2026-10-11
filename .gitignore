@@ -1,0 +1,5 @@
+# Only the website in GIT/ is published. Everything else in this folder —
+# e-tickets, rental and booking PDFs, photos — stays on this computer.
+/*
+!/.gitignore
+!/GIT/

@@ -11,3 +11,6 @@ assets/photos/_originals/
 # email addresses and phone numbers. This repo is public; never commit them.
 Others/
 *_confirmation*
+
+# Local Claude Code settings for this machine.
+.claude/

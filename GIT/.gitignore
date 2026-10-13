@@ -6,6 +6,10 @@ assets/photos/Mt. Asahidake.jpg
 assets/photos/Mt.Kurodake.jpg
 assets/photos/Sounkyo Onsen.jpg
 assets/photos/_originals/
+assets/photos/Ginga_Ryusei_*.jpg
+assets/photos/OyunumaOkunoyuPond*.jpg
+assets/photos/Noboribetsu[0-9]*.jpg
+assets/photos/Jozankei_*.jpg
 
 # Booking screenshots and confirmations — contain reservation numbers,
 # email addresses and phone numbers. This repo is public; never commit them.
